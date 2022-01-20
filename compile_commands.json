@@ -1,0 +1,175 @@
+[
+ {
+  "directory": "/Users/iait-bel/projects/pushswap",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I./inc",
+   "-o",
+   "build/main.o",
+   "-c",
+   "src/main.c"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I./inc",
+   "-o",
+   "build/utils.o",
+   "-c",
+   "src/utils.c"
+  ],
+  "file": "src/utils.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I./inc",
+   "-o",
+   "build/stack.o",
+   "-c",
+   "src/stack.c"
+  ],
+  "file": "src/stack.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/utils.o",
+   "-c",
+   "src/utils.c"
+  ],
+  "file": "src/utils.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/stack.o",
+   "-c",
+   "src/stack.c"
+  ],
+  "file": "src/stack.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/str_utils.o",
+   "-c",
+   "src/str_utils.c"
+  ],
+  "file": "src/str_utils.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/swap.o",
+   "-c",
+   "src/swap.c"
+  ],
+  "file": "src/swap.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/swipeup.o",
+   "-c",
+   "src/swipeup.c"
+  ],
+  "file": "src/swipeup.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/swipedown.o",
+   "-c",
+   "src/swipedown.c"
+  ],
+  "file": "src/swipedown.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/main.o",
+   "-c",
+   "src/main.c"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/Users/iait-bel/projects/pushswap4",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-I./inc",
+   "-o",
+   "build/instra.o",
+   "-c",
+   "src/instra.c"
+  ],
+  "file": "src/instra.c"
+ }
+]
