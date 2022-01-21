@@ -16,40 +16,10 @@ t_stack stack_wrap(t_item *items, int cap, int len)
 	return st;
 }
 
-int is_sorted(t_stack st)
-{
-	int i;
-	int last;
-
-	i = 1;
-	last = st.items[0].val;
-
-	while (i < st.len)
-	{
-		if (st.items[i].val > last)
-			return 0;
-		last = st.items[i].val;
-		i++;
-	}
-	return 1;
-}
-
 void ft_pushswap(t_data *data)
 {
-	int i;
-	
-	i = 0;
-	while(1)
-	{
-		if (is_sorted(data->sta))
-		{
-			pushback(data);
-			break;
-		}
-		nextinstra(data); 
-		i++;
-	}
-	
+	nextinstra(data);	
+	pushback(data);
 }
 
 int data_setup(int size, char **av)

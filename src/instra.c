@@ -13,6 +13,7 @@ int bringtoTop(t_stack *st, int pos, char * str)
 	{
 		ft_putstrfd(1, "s");
 		ft_putstrfd(1, str);
+		ft_putstrfd(1, "\n");
 		instra_s(st);
 		return 1;
 
@@ -24,6 +25,7 @@ int bringtoTop(t_stack *st, int pos, char * str)
 		{
 			ft_putstrfd(1, "r");
 			ft_putstrfd(1, str);
+			ft_putstrfd(1, "\n");
 			instra_r(st);
 		}
 	}
@@ -34,9 +36,28 @@ int bringtoTop(t_stack *st, int pos, char * str)
 		{
 			ft_putstrfd(1, "rr");
 			ft_putstrfd(1, str);
+			ft_putstrfd(1, "\n");
 			instra_rr(st);
 		}
 	}
+	return 1;
+}
+
+unsigned int biggest_top(t_stack *st)
+{
+	int i;
+	int pos;
+
+	pos = st->len - 1;
+	
+	i = 0;
+	while(i < st->len - 1)
+	{
+		if (st->items[pos].val < st->items[i].val)
+			pos = i;
+		i++;
+	}
+	bringtoTop(st, pos, "b");
 	return 1;
 }
 
@@ -47,14 +68,11 @@ int pushback(t_data *data)
 	i = 0;
 	while (data->stb.len)
 	{
-		if(data->stb.items[]sort_pos])
-		{
-
-		}
+		biggest_top(&data->stb);
 		pusha(data);
 		i++;
 	}
-	return i;
+	return (i);
 }
 
 
@@ -78,14 +96,20 @@ void swapbif(t_data *data)
 		swapb(data);
 }
 
+void sorta(t_data *data)
+{
+	while(data->sta.len)
+		pushb(data);
+}
+
 int nextinstra(t_data *data)
 {
 	unsigned int half;
 	int j;
 
+	half = data->sta.median;
 	while(data->sta.len > 4)
 	{
-		half = data->sta.median;
 		j = 0;
 		while (j < 4)
 		{
@@ -101,9 +125,8 @@ int nextinstra(t_data *data)
 			}
 			j++;
 		}
-		data->sta.median -= 2;
+		half -= 2;
 	}
-	
-
+	sorta(data);
 	return 1;
 }
