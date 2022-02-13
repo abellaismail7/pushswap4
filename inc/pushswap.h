@@ -27,7 +27,7 @@ int ft_strlen(char *str);
 void ft_putstrfd(int fd, char *str);
 t_item *av2int(char **av, int size);
 void swap(t_item *arr, int i1, int i2);
-int nextinstra(t_data *data);
+int nextinstra(t_data *data, int div);
 int pushback(t_data *data);
 void ft_quicksort(int *arr, int left);
 t_item *pop(t_stack *st);

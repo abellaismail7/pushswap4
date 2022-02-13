@@ -4,8 +4,8 @@ INCLUDE	= -I./inc
 
 COMMON_OBJ = utils.o stack.o str_utils.o swap.o swipeup.o swipedown.o
 
-OBJ		= main.o instra.o
-EXEC	= pushswap
+OBJ		= main.o instra.o min.o
+EXEC	= push_swap
 B_DIR	= build
 B_OBJ	= $(addprefix $(B_DIR)/, $(OBJ))
 C_OBJ	= $(addprefix $(B_DIR)/, $(COMMON_OBJ))

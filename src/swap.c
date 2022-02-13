@@ -18,7 +18,7 @@ int swapab(t_data *data)
 {
 	if(data->print_inst)
 		ft_putstrfd(1, "ss\n");
-	return swapa(data) || swapb(data);
+	return instra_s(&data->sta) || instra_s(&data->stb);
 }
 
 int pusha(t_data *data)

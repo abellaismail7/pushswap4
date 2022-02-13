@@ -18,8 +18,12 @@ t_stack stack_wrap(t_item *items, int cap, int len)
 
 void ft_pushswap(t_data *data)
 {
-	nextinstra(data);	
-	pushback(data);
+	if (data->sta.len > 200)
+		nextinstra(data, 11);	
+	else if (data->sta.len > 50)
+		nextinstra(data, 5);	
+	else
+		nextinstra(data, 4);	
 }
 
 int data_setup(int size, char **av)

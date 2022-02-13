@@ -1,7 +1,7 @@
 #include "pushswap.h"
 #include "stack.h"
 #include "common.h"
-#include <sys/_types/_sigaltstack.h>
+#include "utils.h"
 
 int bringtoTop(t_stack *st, int pos, char * str)
 {
@@ -43,39 +43,6 @@ int bringtoTop(t_stack *st, int pos, char * str)
 	return 1;
 }
 
-unsigned int biggest_top(t_stack *st)
-{
-	int i;
-	int pos;
-
-	pos = st->len - 1;
-	
-	i = 0;
-	while(i < st->len - 1)
-	{
-		if (st->items[pos].val < st->items[i].val)
-			pos = i;
-		i++;
-	}
-	bringtoTop(st, pos, "b");
-	return 1;
-}
-
-int pushback(t_data *data)
-{
-	int i;
-	
-	i = 0;
-	while (data->stb.len)
-	{
-		biggest_top(&data->stb);
-		pusha(data);
-		i++;
-	}
-	return (i);
-}
-
-
 int min(int a, int b)
 {
 	if (a > b)
@@ -83,50 +50,105 @@ int min(int a, int b)
 	return a;
 }
 
-void swapbif(t_data *data)
+#include <stdio.h>
+int swapif(t_data *data, unsigned int max_pos)
 {
-	t_stack *st;
+	t_stack *stb;
+	t_stack *sta;
 
-	st = &data->stb;
-	if (st->len < 2)
-		return ;
-	if (st->items[st->len - 1].sort_pos > st->items[0].sort_pos)
-		swipeupb(data);
-	else if (st->items[st->len - 1].val < st->items[st->len - 2].val)
-		swapb(data);
+	sta = &data->sta;
+	stb = &data->stb;
+	if (stb->len < 2 || sta->len < 2)
+		return 0;
+	if (stb->items[stb->len - 1].val < stb->items[stb->len - 2].val
+		|| sta->items[sta->len - 2].sort_pos >= max_pos)
+		return 0;
+	swapab(data);
+	return 1;
 }
 
-void sorta(t_data *data)
+int push2b(t_data *data, int div)
 {
-	while(data->sta.len)
-		pushb(data);
-}
+	int max_pos;
+	int count;
+	int max_pos1;
+	t_stack *sta;
 
-int nextinstra(t_data *data)
-{
-	unsigned int half;
-	int j;
-
-	half = data->sta.median;
-	while(data->sta.len > 4)
+	sta = &data->sta;
+	div = sta->len/div;
+	max_pos = sta->len - div - div;
+	max_pos1 =  sta->len - div;
+	count = 0;
+	while(sta->len)
 	{
-		j = 0;
-		while (j < 4)
+		int pos = sta->items[sta->len - 1].sort_pos;
+		if (pos >= max_pos1)
 		{
-			if (data->sta.items[data->sta.len - 1].sort_pos >= half)
-			{
-				pushb(data);
-				swapbif(data);
-			}
-			else
-			{
-				swipeupa(data);
-				continue;
-			}
-			j++;
+			pushb(data);
+			swipeupb(data);
 		}
-		half -= 2;
+		else if (pos >= max_pos)
+		{
+			pushb(data);
+			count++;
+			if (count % div == 0)
+				max_pos -= div;
+		}
+		else
+		{
+			//if(!swapif(data, max_pos))
+				swipeupa(data);
+		}
 	}
-	sorta(data);
+
+	return 1;
+}
+
+void back2a(t_data *data)
+{
+	int i;
+	t_stack *stb;
+	int mpos[2];
+	int dis[2];
+
+	stb = &data->stb;
+	i = 0;
+	while (stb->len)
+	{
+		find_mins_by_pos(stb, mpos, i);
+		dis[0] = min(mpos[0], data->stb.len - mpos[0]);
+		dis[1] = min(mpos[1], data->stb.len - mpos[1]);
+		if (dis[0] <= dis[1] || mpos[1] == -1)
+		{
+			bringtoTop(stb, mpos[0], "b");
+			pusha(data);
+		}
+		else
+		{
+			bringtoTop(stb, mpos[1], "b");
+			pusha(data);
+			find_mins_by_pos(stb, mpos, i);
+			bringtoTop(stb, mpos[0], "b");
+			pusha(data);
+			swapa(data);
+			i++;
+		}
+		i++;
+	}
+}
+
+int nextinstra(t_data *data, int div)
+{
+	push2b(data, div);
+	back2a(data);
+
+	//int i = 0;
+	//while(i < data->sta.len)
+	//{
+	//	t_item item = data->sta.items[i];
+
+	//	printf("%d { %d }\n", item.val, item.sort_pos);
+	//	i++;
+	//}
 	return 1;
 }
