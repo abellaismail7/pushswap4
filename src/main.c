@@ -19,7 +19,7 @@ t_stack stack_wrap(t_item *items, int cap, int len)
 void ft_pushswap(t_data *data)
 {
 	if (data->sta.len > 200)
-		nextinstra(data, 11);	
+		nextinstra(data, 10);	
 	else if (data->sta.len > 50)
 		nextinstra(data, 5);	
 	else
@@ -38,6 +38,7 @@ int data_setup(int size, char **av)
 	{
 		free(data.sta.items);
 		free(data.stb.items);
+		ft_putstrfd(2, "ERROR\n");
 		return 1;
 	}
 	ft_pushswap(&data);

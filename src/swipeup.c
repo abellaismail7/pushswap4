@@ -20,6 +20,6 @@ int swipeup(t_data *data)
 {
 	if(data->print_inst)
 		ft_putstrfd(1, "rr\n");
-	return instra_r(&data->sta) || instra_r(&data->stb);
+	return instra_r(&data->sta) && instra_r(&data->stb);
 }
 

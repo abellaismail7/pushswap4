@@ -19,6 +19,6 @@ int swipedown(t_data *data)
 {
 	if(data->print_inst)
 		ft_putstrfd(1, "rrr\n");
-	return swipedowna(data) || swipedownb(data);
+	return instra_rr(&data->sta) || instra_rr(&data->stb);
 }
 

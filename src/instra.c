@@ -71,33 +71,36 @@ int push2b(t_data *data, int div)
 {
 	int max_pos;
 	int count;
-	int max_pos1;
 	t_stack *sta;
+	int sbu = 0;
 
 	sta = &data->sta;
 	div = sta->len/div;
-	max_pos = sta->len - div - div;
-	max_pos1 =  sta->len - div;
+	max_pos = sta->len - div;
 	count = 0;
 	while(sta->len)
 	{
 		int pos = sta->items[sta->len - 1].sort_pos;
-		if (pos >= max_pos1)
+		if (pos >= max_pos)
 		{
+			if (sbu == 1)
+				swipeupb(data);
+			sbu = 0;
 			pushb(data);
-			swipeupb(data);
-		}
-		else if (pos >= max_pos)
-		{
-			pushb(data);
+			if (pos >= max_pos + div / 2)
+				sbu = 1;
 			count++;
 			if (count % div == 0)
 				max_pos -= div;
 		}
 		else
 		{
+			if (sbu == 1)
+				swipeup(data);
 			//if(!swapif(data, max_pos))
+			else
 				swipeupa(data);
+			sbu = 0;
 		}
 	}
 
@@ -141,7 +144,6 @@ int nextinstra(t_data *data, int div)
 {
 	push2b(data, div);
 	back2a(data);
-
 	//int i = 0;
 	//while(i < data->sta.len)
 	//{

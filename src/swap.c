@@ -25,10 +25,6 @@ int pusha(t_data *data)
 {
 	if(data->print_inst)
 		ft_putstrfd(1, "pa\n");
-	if (data->sta.items->sort_pos > data->sta.median)
-		data->sta.median -= 1;
-	else
-		data->sta.median += 1;
 	return instra_p(&data->sta, &data->stb);
 }
 

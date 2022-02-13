@@ -28,4 +28,4 @@ t_stack clone_st(t_stack *st);
 void iquicksort(int *arr, int *iarr, int left);
 void ft_quicksort(int *arr, int left);
 
-#endif // !COMMON_H
+#endif

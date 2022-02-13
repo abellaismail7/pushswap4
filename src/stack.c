@@ -6,7 +6,7 @@
 /*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:19:36 by iait-bel          #+#    #+#             */
-/*   Updated: 2021/12/26 14:19:36 by iait-bel         ###   ########.fr       */
+/*   Updated: 2022/02/13 21:46:46 by bella            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ int instra_r(t_stack *st)
 	if (len == 0)
 		return 0;
 	while(len-- > 1)
-	{
 		swap(st->items, len, len - 1);
-	}
 	return 1;
 }
 
